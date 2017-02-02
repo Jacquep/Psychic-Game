@@ -1,12 +1,9 @@
-  
-
-
 
 
   var guesses = 10;
   var letters = [ "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z" ];
   var userGuess = "";
-  var lettersGuessed;
+  var lettersGuessed =[];
   var computerPick;
   var wins = 0;
   var losses =0;
@@ -25,44 +22,43 @@ document.onkeyup = function(event){
 
 	var computerPick = letters[Math.floor(Math.random() * letters.length)];
 
-	var lettersGuessed = userGuess;
 
 // If the user presses "a","b","c" etc., run the game logic.
 
 if (userGuess === computerPick) {
+
+  document.querySelector("#win").value = wins;
 	wins++;
 }
 
 else {
 
+      document.querySelector("#loss").value = losses;
+      document.querySelector("#guessed").value = guesses;
+
 	guesses--;     
 	losses++;
 }
 
-// Keeps from decrementing into negative numbers and refreshes page once all guesses are used. 
+// Keeps from decrementing into negative numbers and refreshes page once all guesses are used. *** I couldn't find another way to do ****
 
 if (guesses<1) {
 
-	window.location.reload();
+
+window.location.reload();
 
 }
+
 
 if (userGuess != computerPick) {
 
-document.querySelector("#lettersGuessed").innerHTML = userGuess
+  lettersGuessed.push(userGuess);
 
+  document.querySelector("#print").value = lettersGuessed;
 
 }
 
- // Creating a variable to hold our new HTML. Our HTML now keeps track of our wins/losses.
 
-          var html = "<h3>Wins: " + wins + "</h3>" + "<h3>Losses: " + losses + "</h3>";
-
-          document.querySelector("#game").innerHTML = html;
-
-          var html2 = "<h3>Guesses Left " + guesses + "</h3>";
-
-          document.querySelector("#guessed").innerHTML = html2
 
 
 };
