@@ -27,20 +27,21 @@ document.onkeyup = function(event){
 
 if (userGuess === computerPick) {
 
-  document.querySelector("#win").value = wins;
+ 
 	wins++;
+  document.querySelector("#win").value = wins;
 }
 
 else {
 
-      document.querySelector("#loss").value = losses;
-      document.querySelector("#guessed").value = guesses;
-
 	guesses--;     
 	losses++;
+
+  document.querySelector("#loss").value = losses;
+  document.querySelector("#guessed").value = guesses;
 }
 
-// Keeps from decrementing into negative numbers and refreshes page once all guesses are used. *** I couldn't find another way to do ****
+// Keeps from decrementing into negative numbers and refreshes page once all guesses are used. *** I couldn't find another way to do ****  
 
 if (guesses<1) {
 
